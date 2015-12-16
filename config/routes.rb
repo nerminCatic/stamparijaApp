@@ -54,4 +54,17 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root 'welcomes#show'
+  resource :session, only: [:new, :create]
+  resources :users, only: [:new, :create]
+
+  resource :dashboard, only: :show
+
+  namespace :admin do
+    resource :adashboard, only: :show
+    resource :user, only: :show
+  end
+
+  resource :project, only: :show
 end
